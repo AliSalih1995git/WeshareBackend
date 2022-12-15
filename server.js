@@ -11,7 +11,12 @@ const options = {
   origin: "http://localhost:3000",
   optionsSuccessStatus: 200,
 };
-app.use(cors(options));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    optionsSuccessStatus: 200,
+  })
+);
 app.use(
   fileUpload({
     useTempFiles: true,
