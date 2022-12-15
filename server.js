@@ -7,16 +7,12 @@ const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
 app.use(express.json());
-const options = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200,
+const corsOptions = {
+  origin: "*",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
 };
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    optionsSuccessStatus: 200,
-  })
-);
+app.use(cors(corsOptions));
 app.use(
   fileUpload({
     useTempFiles: true,
