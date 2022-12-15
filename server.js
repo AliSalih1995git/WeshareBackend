@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 const options = {
   origin: "http://localhost:3000",
-  optionsSucessStatus: 200,
+  optionsSuccessStatus: 200,
 };
 app.use(cors(options));
 app.use(
