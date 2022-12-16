@@ -14,7 +14,7 @@ var corsOptions = {
 
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://main.d28fqyt2gxwcsx.amplifyapp.com",
     optionsSuccessStatus: 200,
   })
 );
