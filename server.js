@@ -11,25 +11,31 @@ const app = express();
 //   origin: "http://localhost:3000",
 //   optionsSuccessStatus: 200,
 // };
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET,POST,PUT,PATCH,DELETE,UPDATE,OPTIONS"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With, X-HTTP-Method-Override,Content-Type,Accept"
-  );
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Credentials", true);
+//   res.header(
+//     "Access-Control-Allow-Origin",
+//     "https://main.d28fqyt2gxwcsx.amplifyapp.com/"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Methods",
+//     "GET,POST,PUT,PATCH,DELETE,UPDATE,OPTIONS"
+//   );
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "X-Requested-With, X-HTTP-Method-Override,Content-Type,Accept"
+//   );
+//   next();
+// });
 
 app.use(
   cors({
-    allowedHeaders: "*",
-    allowMethods: "*",
-    origin: "http://localhost:3000",
+    headers: {
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Access-Control-Allow-Origin":
+        "https://main.d28fqyt2gxwcsx.amplifyapp.com/",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+    },
   })
 );
 app.use(
