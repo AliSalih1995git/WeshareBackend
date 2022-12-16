@@ -32,7 +32,7 @@ app.use(
   cors({
     allowedHeaders: "*",
     allowMethods: "*",
-    origin: "*",
+    origin: "https://main.d28fqyt2gxwcsx.amplifyapp.com",
   })
 );
 app.use(
