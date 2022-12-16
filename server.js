@@ -6,12 +6,10 @@ const { readdirSync } = require("fs");
 const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
-app.use(express.json());
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true, //access-control-allow-credentials:true
-  preflightContinue: false,
-  optionSuccessStatus: 200,
+
+var corsOptions = {
+  origin: "http://example.com",
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
@@ -20,6 +18,7 @@ app.use(
     useTempFiles: true,
   })
 );
+app.use(express.json());
 //Routes
 readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)));
 
