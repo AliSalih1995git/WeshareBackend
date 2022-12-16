@@ -16,6 +16,8 @@ app.use(
   cors({
     origin: "https://main.d28fqyt2gxwcsx.amplifyapp.com",
     optionsSuccessStatus: 200,
+    allowedHeaders: "*",
+    allowMethods: "*",
   })
 );
 app.use(
