@@ -7,12 +7,12 @@ const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
 
-var corsOptions = {
-  origin: "http://example.com",
-  optionsSuccessStatus: 200,
-};
+// var corsOptions = {
+//   origin: "http://example.com",
+//   optionsSuccessStatus: 200,
+// };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(
   fileUpload({
     useTempFiles: true,
