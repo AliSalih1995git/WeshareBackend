@@ -29,15 +29,7 @@ const app = express();
 // });
 
 app.use(
-  cors({
-    headers: {
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin":
-        "https://main.d28fqyt2gxwcsx.amplifyapp.com/",
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-    },
-  })
-);
+  cors('*');
 app.use(
   fileUpload({
     useTempFiles: true,
