@@ -17,7 +17,6 @@ exports.register = async (req, res) => {
     const {
       first_name,
       last_name,
-      username,
       email,
       password,
       bYear,
@@ -125,6 +124,9 @@ exports.login = async (req, res) => {
       return res.status(400).json({
         message: "The email address you entered is not connected to an account",
       });
+    }
+    if (user.isBlock) {
+      return res.status(400).json({ message: "You are blocked by admin" });
     }
     const check = await bcrypt.compare(password, user.password);
     if (!check) {

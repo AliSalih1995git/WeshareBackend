@@ -7,10 +7,6 @@ const dotenv = require("dotenv");
 dotenv.config();
 const app = express();
 
-// var corsOptions = {
-//   origin: "http://localhost:3000",
-//   optionsSuccessStatus: 200,
-// };
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   res.header(
