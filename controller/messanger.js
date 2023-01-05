@@ -52,7 +52,7 @@ exports.addMessage = async (req, res) => {
 
 //message get
 exports.messageGet = async (req, res) => {
-  console.log(req.body);
+  console.log(req.body, "reqbody");
   try {
     const messages = await Message.find({
       conversationId: req.params.conversationId,

@@ -11,6 +11,7 @@ const { generateToken } = require("../helpers/tokens");
 const { sendVerificationEmail, sendResetCode } = require("../helpers/mailer");
 const generateCode = require("../helpers/generateCode");
 const Code = require("../models/Code");
+const mongoose = require("mongoose");
 
 exports.register = async (req, res) => {
   try {
@@ -360,14 +361,14 @@ exports.getFriend = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
     const friends = await Promise.all(
-      user.followings.map((friendId) => {
+      user.following.map((friendId) => {
         return User.findById(friendId);
       })
     );
     let friendList = [];
     friends.map((friend) => {
-      const { _id, username, profilePicture } = friend;
-      friendList.push({ _id, username, profilePicture });
+      const { _id, username, picture } = friend;
+      friendList.push({ _id, username, picture });
     });
     res.status(200).json(friendList);
   } catch (error) {
@@ -616,6 +617,25 @@ exports.removeFromSearch = async (req, res) => {
       },
       { $pull: { search: { user: searchUser } } }
     );
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getFriendsPageInfos = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id)
+      .select("friends requests")
+      .populate("friends", "first_name last_name picture username")
+      .populate("requests", "first_name last_name picture username");
+    const sentRequests = await User.find({
+      requests: mongoose.Types.ObjectId(req.user.id),
+    }).select("first_name last_name picture username");
+    res.json({
+      friends: user.friends,
+      requests: user.requests,
+      sentRequests,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
