@@ -34,6 +34,7 @@ router.post("/register", register);
 router.post("/activate", authUser, activateAccount);
 router.post("/login", login);
 router.post("/sendVerification", authUser, sendVerification);
+router.post("/findUser", findUser);
 router.get("/findUser", authUser, findUser);
 router.get("/getUser/:id", authUser, getUser);
 router.post("/sendResetPasswordCode", sendResetPasswordCode);
