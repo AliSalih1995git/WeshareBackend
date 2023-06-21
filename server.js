@@ -7,27 +7,8 @@ dotenv.config();
 const app = express();
 const connectDatabase = require("./config/connection");
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header(
-    "Access-Control-Allow-Origin",
-    "https://weshare-frontend-b5qp.onrender.com"
-  );
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET,POST,PUT,PATCH,DELETE,UPDATE,OPTIONS"
-  );
-  res.header(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With, X-HTTP-Method-Override,Content-Type,Accept"
-  );
-  next();
-});
-
 app.use(
   cors({
-    allowedHeaders: "*",
-    allowMethods: "*",
     origin: "*",
   })
 );
