@@ -26,6 +26,7 @@ const {
   removeFromSearch,
   getFriend,
   getFriendsPageInfos,
+  getAllUnknownFriends,
 } = require("../controller/user");
 const { authUser } = require("../middlwares/auth");
 const router = express.Router();
@@ -44,6 +45,7 @@ router.get("/getProfile/:username", authUser, getProfile);
 router.put("/updateProfilePicture", authUser, updateProfilePicture);
 router.put("/updateCover", authUser, updateCover);
 router.put("/updateDetails", authUser, updateDetails);
+router.get("/unknownFriends/:id", authUser, getAllUnknownFriends);
 router.put("/addFriend/:id", authUser, addFriend);
 router.put("/cancelRequest/:id", authUser, cancelRequest);
 router.put("/follow/:id", authUser, follow);

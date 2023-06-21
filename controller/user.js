@@ -325,7 +325,22 @@ exports.updateDetails = async (req, res) => {
   }
 };
 
+exports.getAllUnknownFriends = async (req, res) => {
+  const currentUserId = req.params.id;
+  try {
+    const currentUser = await User.findById(currentUserId).populate("friends");
+    const friendIds = currentUser.friends.map((friend) => friend._id);
+    const users = await User.find({
+      _id: { $ne: currentUserId },
+      _id: { $nin: friendIds },
+    });
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 exports.addFriend = async (req, res) => {
+  console.log("Enter");
   try {
     if (req.user.id !== req.params.id) {
       const sender = await User.findById(req.user.id);
