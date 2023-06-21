@@ -11,7 +11,7 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Credentials", true);
   res.header(
     "Access-Control-Allow-Origin",
-    "https://main.d1fm4x7g2yd2wy.amplifyapp.com"
+    "https://weshare-frontend-b5qp.onrender.com"
   );
   res.header(
     "Access-Control-Allow-Methods",
